@@ -300,7 +300,7 @@ public class WorkflowsClient {
 		default:
 			long currentTimeInMillis = System.currentTimeMillis();
 			if (startTimeInMillis + timeoutInMinutes * DateUtils.MILLIS_PER_MINUTE <= currentTimeInMillis) {
-				throw new VCommanderException("Workflow did not completed in the given timeout: " + timeoutInMinutes + " minutes");
+				throw new VCommanderException("Workflow did not complete in the given timeout: " + timeoutInMinutes + " minutes");
 			} else {
 				long toWait = Math.min(pollingInSeconds * DateUtils.MILLIS_PER_SECOND, startTimeInMillis + timeoutInMinutes * DateUtils.MILLIS_PER_MINUTE - currentTimeInMillis);
 				ClientUtils.log(logger, "Workflow status is: " + workflowStatus + ". Wait " + toWait / DateUtils.MILLIS_PER_SECOND + " seconds ...");

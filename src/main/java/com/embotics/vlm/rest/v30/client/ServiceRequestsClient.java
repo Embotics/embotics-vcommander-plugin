@@ -291,7 +291,7 @@ public class ServiceRequestsClient {
 		default:
 			long currentTimeInMillis = System.currentTimeMillis();
 			if (startTimeInMillis + timeoutInMinutes * DateUtils.MILLIS_PER_MINUTE <= currentTimeInMillis) {
-				throw new VCommanderException("Service request did not completed in the given timeout: " + timeoutInMinutes + " minutes");
+				throw new VCommanderException("Service request did not complete in the given timeout: " + timeoutInMinutes + " minutes");
 			} else {
 				long toWait = Math.min(pollingInSeconds * DateUtils.MILLIS_PER_SECOND, startTimeInMillis + timeoutInMinutes * DateUtils.MILLIS_PER_MINUTE - currentTimeInMillis);
 				ClientUtils.log(logger, "Service request state is: " + requestState + ". Wait " + toWait / DateUtils.MILLIS_PER_SECOND + " seconds ...");
